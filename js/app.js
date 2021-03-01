@@ -3,12 +3,13 @@ let computerScore = 0;
 const userScore_span = $('#user-score');
 const computerScore_span = $('#computer-score');
 const result_div = $('.result');
-const rock_div = $('#pierre');
-const paper_div = $('#papier');
-const scissors_div = $('#ciseaux');
+const computer_span = $('.computer-choice');
+const pierre_div = $('#pierre');
+const papier_div = $('#papier');
+const ciseaux_div = $('#ciseaux');
 
 function computerChoice(){
-    const choices = ['rock', 'paper', 'scissors'];
+    const choices = ['pierre', 'papier', 'ciseaux'];
     return choices[Math.floor(Math.random() * 3)];
 }
 computerChoice();
@@ -32,37 +33,37 @@ function draw(){
 function game(userChoice) {
     const computer = computerChoice();
     const user = userChoice;
-
+    computer_span.html(computer);
     switch (user + computer) {
-        case "rockscissors":
-        case "paperrock":
-        case "scissorspaper":
+        case "pierreciseaux":
+        case "papierpierre":
+        case "ciseauxpapier":
             win();
             break;
-        case "rockpaper":
-        case "paperscissors":
-        case "scissorsrock":
+        case "pierrepapier":
+        case "papierciseaux":
+        case "ciseauxpierre":
             lose();
             break;
-        case "rockrock":
-        case "paperpaper":
-        case "scissorsscissors":
+        case "pierrepierre":
+        case "papierpapier":
+        case "ciseauxciseaux":
             draw();
             break;
     }
 }
 
 function main(){
-    rock_div.click(function (){
-        game("rock")
+    pierre_div.click(function (){
+        game("pierre")
     })
 
-    paper_div.click(function (){
-        game("paper")
+    papier_div.click(function (){
+        game("papier")
     })
 
-    scissors_div.click(function (){
-        game("scissors")
+    ciseaux_div.click(function (){
+        game("ciseaux")
     })
 }
 
